@@ -1,8 +1,11 @@
 let TIME_ENTRY = {}
 
 let submitBtn = document.querySelector('#submit')
-let startTimeInput = document.querySelector('#start-time')
-let endtimeInput = document.querySelector('#end-time')
+let startHoursInput = document.querySelector('#start-hours')
+let startMinutesInput = document.querySelector('#start-minutes')
+
+let endHoursInput = document.querySelector('#end-hours')
+let endMinutesInput = document.querySelector('#end-minutes')
 // let firstBreak = document.querySelector('#first-break')
 // let secondBreak = document.querySelector('#second-break')
 // let thirdBreak = document.querySelector('#third-break')
@@ -13,42 +16,52 @@ submitBtn.addEventListener('click', (event) => {
   /*----------------------*/
   /* Calculate StartTime */
   /*--------------------*/
-  let startTimeValue = startTimeInput.value.split(':')
-  if (startTimeValue[1] < 15 && startTimeValue[1] > 0) {
-    startTimeValue[1] = 00
+  let totalStartHoursInMinutes = startHoursInput.value * 60
+  let totalStartMinutes = startMinutesInput.value * 1
+
+  if (totalStartMinutes < 15 && totalStartMinutes > 0) {
+    totalStartMinutes = 00
   } 
 
-  if (startTimeValue[1] < 30 && startTimeValue[1] > 15) {
-    startTimeValue[1] = 15
+  if (totalStartMinutes < 30 && totalStartMinutes > 15) {
+    totalStartMinutes = 15
   } 
 
-  if (startTimeValue[1] < 45 && startTimeValue[1] > 30) {
-    startTimeValue[1] = 30
+  if (totalStartMinutes < 45 && totalStartMinutes > 30) {
+    totalStartMinutes = 30
   }
 
-  if (startTimeValue[1] < 60 && startTimeValue[1] > 46) {
-    startTimeValue[1] = 45
+  if (totalStartMinutes < 60 && totalStartMinutes > 46) {
+    totalStartMinutes = 45
   } 
+  
+  TIME_ENTRY.startTime = totalStartHoursInMinutes + totalStartMinutes
 
   /*--------------------*/
   /* Calculate EndTime */
   /*------------------*/
-  let endTimeValue = endtimeInput.value.split(':')
-  if (endTimeValue[1] < 15 && endTimeValue[1] > 0) {
-    endTimeValue[1] = 00
+  let totalEndHoursInMinutes = endHoursInput.value * 60
+  let totalEndMinutes = endMinutesInput.value * 1
+  if (totalEndMinutes < 15 && totalEndMinutes > 0) {
+    totalEndMinutes = 00
   } 
 
-  if (endTimeValue[1] < 30 && endTimeValue[1] > 15) {
-    endTimeValue[1] = 15
+  if (totalEndMinutes < 30 && totalEndMinutes > 15) {
+    totalEndMinutes = 15
   } 
 
-  if (endTimeValue[1] < 45 && endTimeValue[1] > 30) {
-    endTimeValue[1] = 30
+  if (totalEndMinutes < 45 && totalEndMinutes > 30) {
+    totalEndMinutes = 30
   }
 
-  if (endTimeValue[1] < 60 && endTimeValue[1] > 46) {
-    endTimeValue[1] = 45
+  if (totalEndMinutes < 60 && totalEndMinutes > 46) {
+    totalEndMinutes = 45
   } 
+
+  TIME_ENTRY.endTime = totalEndHoursInMinutes + totalEndMinutes
+
+  TIME_ENTRY.workedHours = Math.round((TIME_ENTRY.endTime - TIME_ENTRY.startTime) / 60 * 100) / 100
+  console.log(TIME_ENTRY)
 
   // if (firstBreak.checked) {
   // 	object.firstBreak = parseInt(firstBreak.value, 10)  
@@ -67,11 +80,4 @@ submitBtn.addEventListener('click', (event) => {
   // } else {
   // 	  object.thirdBreak = 0
   // }
-  
-  TIME_ENTRY.startTime = parseInt(startTimeValue[0], 10) * 60 + parseInt(startTimeValue[1], 10)
-  TIME_ENTRY.endTime = parseInt(endTimeValue[0], 10) * 60 + parseInt(endTimeValue[1], 10)
-  TIME_ENTRY.workedHours = Math.round((TIME_ENTRY.endTime - TIME_ENTRY.startTime) / 60 * 100) / 100
-
-  console.log(TIME_ENTRY)
-
 })

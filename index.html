@@ -12,12 +12,20 @@
         <form>
             <div class="input-wrapper">
                 <label for="start-time">Starttime</label>
-                <input id="start-time" type="text" placeholder="09:00">
+                <div>
+                    <input id="start-hours" type="text" placeholder="09">
+                    <span>:</span>
+                    <input id="start-minutes" type="text" placeholder="00">
+                </div>
             </div>
             <div class="input-wrapper">
-                <label for="end-time">Endtime</label>
-                <input id="end-time" type="text" placeholder="18:00">
-            </div>
+                    <label for="end-time">Endtime</label>
+                    <div>
+                        <input id="end-hours" type="text" placeholder="18">
+                        <span>:</span>
+                        <input id="end-minutes" type="text" placeholder="00">
+                    </div>
+                </div>
             <div class="check-wrapper">
                 <label for="first-break">15min</label>
                 <input id="first-break" type="checkbox" value="15">
