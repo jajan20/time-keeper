@@ -1,0 +1,11 @@
+* {
+    font-family: sans-serif;
+}
+
+.input-wrapper {
+    margin: 20px 0;
+}
+
+input {
+    padding: 10px;
+}
