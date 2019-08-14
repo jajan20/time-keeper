@@ -81,6 +81,5 @@ submitBtn.addEventListener('click', (event) => {
   
   TIME_ENTRY.workedHours = Math.round((TIME_ENTRY.endTime - TIME_ENTRY.startTime - TIME_ENTRY.firstBreak - TIME_ENTRY.secondBreak - TIME_ENTRY.thirdBreak) / 60 * 100) / 100
   console.log(TIME_ENTRY)
-  
 
 })
