@@ -5,7 +5,18 @@
 }
 
 .container {
+
 }
+
+#submit {
+    background-color: deepskyblue;
+    border: 0;
+    border-radius: 4px;
+    padding: 10px 30px;
+    outline: none;
+    font-weight: bold;
+}
+
 
 form {
     display: flex;
